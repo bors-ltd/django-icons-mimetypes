@@ -1,6 +1,0 @@
--r ../requirements.txt
-Django>=1.8
-coverage
-docutils
-ipython
-ipdb
