@@ -30,16 +30,13 @@ SIZE_DEFAULT = "64x64"
 ICONS_CACHE = {}
 
 MIMETYPE_FALLBACK = {
-    'application/rtf': "x-office-document",
-    'application/vnd.oasis.opendocument.text': "x-office-document",
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': "application/msexcel",
-    'application/zip': "package-x-generic",
+    "application/rtf": "x-office-document",
+    "application/vnd.oasis.opendocument.text": "x-office-document",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "application/msexcel",
+    "application/zip": "package-x-generic",
 }
 
-MAIN_PART_FALLBACK = {
-    'image': "image-x-generic",
-    'text': "text-x-generic",
-}
+MAIN_PART_FALLBACK = {"image": "image-x-generic", "text": "text-x-generic"}
 
 
 logger = logging.getLogger(__name__)
@@ -52,6 +49,7 @@ def _load_icons_cache():
             icon_path = os.path.join("mimetypes", size, icon)
             # Compute static URL
             ICONS_CACHE[(size, icon)] = staticfiles_storage.url(icon_path)
+
 
 _load_icons_cache()
 

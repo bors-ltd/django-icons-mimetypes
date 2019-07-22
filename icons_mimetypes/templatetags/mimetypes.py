@@ -27,7 +27,6 @@ register = template.Library()
 
 
 class MimetypesIconNode(Node):
-
     def __init__(self, mimetype, size, varname=None):
         self.mimetype = mimetype
         self.size = size
@@ -43,7 +42,7 @@ class MimetypesIconNode(Node):
         if self.varname is None:
             return url
         context[self.varname] = url
-        return ''
+        return ""
 
     @classmethod
     def handle_simple(cls, mimetype, size=icons.SIZE_DEFAULT):
@@ -60,28 +59,30 @@ class MimetypesIconNode(Node):
 
         if not bits:
             raise template.TemplateSyntaxError(
-                "'%s' takes at least one argument (path to file)" % (tagname,))
+                "'%s' takes at least one argument (path to file)" % (tagname,)
+            )
 
         mimetype = parser.compile_filter(bits.pop(0))
 
-        if bits and bits[0] != 'as':
+        if bits and bits[0] != "as":
             size = parser.compile_filter(bits.pop(0))
         else:
             size = template.Variable('"%s"' % (icons.SIZE_DEFAULT,))
 
-        if bits and bits[0] == 'as':
+        if bits and bits[0] == "as":
             try:
                 varname = bits[1]
             except IndexError:
                 raise template.TemplateSyntaxError(
-                    "'%s as' takes one argument (varname)" % (tagname,))
+                    "'%s as' takes one argument (varname)" % (tagname,)
+                )
         else:
             varname = None
 
         return cls(mimetype, size, varname)
 
 
-@register.tag('icon')
+@register.tag("icon")
 def do_icon(parser, token):
     """
     A template tag that returns the URL to a mimetype icon

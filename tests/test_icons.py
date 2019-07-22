@@ -20,7 +20,6 @@ from icons_mimetypes import icons
 
 
 class IconsTestCase(TestCase):
-
     def test_cache(self):
         self.assertIn(("64x64", icons.ICON_FOLDER), icons.ICONS_CACHE)
 
@@ -29,13 +28,24 @@ class IconsTestCase(TestCase):
         self.assertEqual(icons.get_icon(None), "/static/mimetypes/64x64/folder.png")
 
         # Regular
-        self.assertEqual(icons.get_icon("application/pdf"), "/static/mimetypes/64x64/application-pdf.png")
+        self.assertEqual(
+            icons.get_icon("application/pdf"),
+            "/static/mimetypes/64x64/application-pdf.png",
+        )
 
         # Mimetype fallback
-        self.assertEqual(icons.get_icon("application/rtf"), "/static/mimetypes/64x64/x-office-document.png")
+        self.assertEqual(
+            icons.get_icon("application/rtf"),
+            "/static/mimetypes/64x64/x-office-document.png",
+        )
 
         # Main part fallback
-        self.assertEqual(icons.get_icon("image/jpeg"), "/static/mimetypes/64x64/image-x-generic.png")
+        self.assertEqual(
+            icons.get_icon("image/jpeg"), "/static/mimetypes/64x64/image-x-generic.png"
+        )
 
         # Unknown
-        self.assertEqual(icons.get_icon("foo/bar"), "/static/mimetypes/64x64/application-x-executable.png")
+        self.assertEqual(
+            icons.get_icon("foo/bar"),
+            "/static/mimetypes/64x64/application-x-executable.png",
+        )

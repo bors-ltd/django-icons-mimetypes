@@ -1,8 +1,9 @@
-*.pyc
 .coverage
-.idea
-.venv
-README.html
 dist/
 django_icons_mimetypes.egg-info/
 htmlcov
+.idea
+*.pyc
+README.html
+.venv
+/.vscode
